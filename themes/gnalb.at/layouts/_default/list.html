@@ -1,0 +1,35 @@
+{{ define "main" }}
+    <div class="item">
+        <h2>{{.Title}}</h2>
+    </div>
+    <div class="item">
+        {{.Content}}
+    </div>
+    <div class="item">
+        <ul>
+        {{ range .Pages.GroupByDate "2006" }}
+        <li>{{ .Key }}
+            <ul>
+                {{ range .Pages.GroupByDate "January" }}
+                <li>{{ .Key }}
+                    <ul>
+                    {{ range .Pages.GroupByDate "02" }}
+                    <li>{{ .Key }}
+                        <ul>
+                        {{ range .Pages }}
+                        <li><a href="{{ .Permalink }}">{{ .Title }}</a>
+                        </li>
+                        {{ end }}
+                        </ul>
+                    </li>
+                    {{ end }}
+                    </ul>
+                </li>
+                {{ end }}
+            </ul>
+        </li>
+        {{ end }}
+        </ul>
+    </div>
+{{ end }}
+

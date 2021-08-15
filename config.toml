@@ -1,0 +1,9 @@
+baseURL = "http://gnalb.at/"
+languageCode = "en-us"
+title = "gnalb.at"
+theme = "gnalb.at"
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
