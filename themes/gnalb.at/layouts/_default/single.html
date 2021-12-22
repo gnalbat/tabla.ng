@@ -1,9 +1,11 @@
 {{ define "main" }}
-    <div class="item">
-        <h1>{{.Title}}</h1>
+    <div class="meta">
+        <h2><a href="{{ .Parent.Permalink }}">{{ .Parent.Title }}</a> &#9660;</h2>
+        <h2>{{ .Title }}</h2>
+        <h3>{{ .Date.Format "2006-01-2" }}</h3>
     </div>
-    <div class="item">
-        {{.Content}}
-    </div>
+    <article class="item">
+        {{ .Content }}
+    </article>
 {{ end }}
 

@@ -8,11 +8,16 @@
     src: url('../fonts/RobotoSlab-Regular.ttf')
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 #container {
     display: block;
     margin: 0 auto;
     margin-top: 2em;
     width: 50%;
+    position: relative;
 }
 
 #header {
@@ -21,6 +26,7 @@
 
 #content {
     max-width: 100%;
+    min-height: 80vh;
     padding-top: 0;
     display: flex;
     flex-wrap: wrap;
@@ -29,19 +35,26 @@
     align-items: flex-start;
 }
 
+.footer {
+    min-height: 3rem;
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+}
+
+.footer > hr {
+    margin-bottom: 1rem;
+}
+
 .item {
+    width: 100%;
     flex-basis: auto;
     display: inline-block;
+    word-wrap: break-word;
 }
 
 .item>*:first-child {
     margin-top: 0;
 } 
-
-.break {
-    flex-basis: 100%;
-    height: 0;
-}
 
 .break+.item {
     padding-left: 0;
@@ -59,6 +72,10 @@
     }
     .item:not(:first-child) {
         padding-left: 0;
+    }
+
+    #container {
+        width: 90%;
     }
 }
 
@@ -99,10 +116,6 @@ h1 a {
 h1 a:hover {
     color: #666;
     text-decoration: inherit;
-}
-
-p {
-    font-family: 'Roboto', sans-serif;
 }
 
 img {
@@ -168,3 +181,11 @@ input:checked+.slider:before {
     background-image: url('/night.svg');
 }
 
+.meta > * {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.meta + .item {
+    margin-top: 2em
+}

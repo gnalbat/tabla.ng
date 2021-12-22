@@ -3,7 +3,11 @@ languageCode = "en-us"
 title = "gnalb.at"
 theme = "gnalb.at"
 
+[params]
+    [params.footer]
+        link = "https://github.com/gnalbat"
+
 [markup]
-[markup.goldmark]
-[markup.goldmark.renderer]
-unsafe = true
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
