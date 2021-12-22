@@ -36,20 +36,18 @@ checkbox.addEventListener('change', (event) => {
     }
 })
 
-window.onload = function() {
-    if (document.cookie) {
-        const darkRemember = document.cookie
-            .split('; ')
-            .find(row => row.startsWith('dark'))
-            .split('=')[1];
-        if (darkRemember === "true") {
-            enableDark();
-        }
+if (document.cookie) {
+    const darkRemember = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('dark'))
+        .split('=')[1];
+    if (darkRemember === "true") {
+        enableDark();
+    }
+} else {
+    if (userPrefersDark) {
+        enableDark();
     } else {
-        if (userPrefersDark) {
-            enableDark();
-        } else {
-            disableDark();
-        }
+        disableDark();
     }
 }
