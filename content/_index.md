@@ -4,7 +4,7 @@ title: "Home Page"
 
 ![](/peanuts.jpg)
 
-Hi, I'm Karlo Tablang. You can contact me at karlo&lt;at&gt;tabla.ng.
+Hi, I'm Karlo Tablang. You can contact me at [karlo@tabla.ng](mailto:karlo@tabla.ng).
 
 You *may* find me at the following sites:
 - [GitHub](/github)
