@@ -2,7 +2,7 @@
 {{ $mysection := ($.Site.GetPage "notes" .Section).Pages }}
         <div class="footer">
             <hr/>            
-            &copy; {{ range last 1 $mysection }}{{ .Date.Format "2006" }}{{ end }}-{{ now.Format "2006" }} <a href="{{ .Site.Params.Footer.link }}">{{ .Site.Title }}</a>
+            &copy; {{ now.Format "2006" }} <a href="{{ .Site.Params.Footer.link }}">{{ .Site.Author.name }}</a>
         </div>
-    </diV>
+    </div>
     <script src='{{ "js/dark.js" | relURL}}'></script>

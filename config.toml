@@ -1,7 +1,10 @@
-baseURL = "http://gnalb.at/"
+baseURL = "http://tabla.ng/"
 languageCode = "en-us"
-title = "gnalb.at"
-theme = "gnalb.at"
+title = "tabla.ng"
+theme = "tabla.ng"
+
+[author]
+    name = "Karlo Tablang"
 
 [params]
     [params.footer]
