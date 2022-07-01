@@ -2,7 +2,7 @@
 {{ $mysection := ($.Site.GetPage "notes" .Section).Pages }}
         <div class="footer">
             <hr/>            
-            &copy; {{ now.Format "2006" }} <a href="{{ .Site.Params.Footer.link }}">{{ .Site.Author.name }}</a>
+            &copy; {{ now.Format "2006" }} <a href="{{ .Site.BaseURL }}">{{ .Site.Author.name }}</a>
         </div>
     </div>
     <script src='{{ "js/dark.js" | relURL}}'></script>

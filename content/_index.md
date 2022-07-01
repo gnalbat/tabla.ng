@@ -7,6 +7,7 @@ title: "Home Page"
 Hi, I'm Karlo Tablang. You can contact me at karlo&lt;at&gt;tabla.ng.
 
 You *may* find me at the following sites:
+- [GitHub](/github)
 - [LinkedIn](/linkedin)
 - [Steam](/steam)
 - [VNDB](/vndb)
