@@ -1,0 +1,12 @@
+body {
+    background: #121212;
+    color: white;
+}
+
+h1 a {
+    color: white;
+}
+
+.a-period::after {
+    color: white;
+}
