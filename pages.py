@@ -24,7 +24,7 @@ def write_head(b):
         b.title(_t="tabla.ng")
         b.link(href="/static/css/modern-normalize.css", rel="stylesheet")
         b.link(href="/static/css/style.css", rel="stylesheet")
-        b.link(href="/static/css/dark.css", rel="stylesheet", id="darksheet")
+        b.link(href="/static/css/dark.css", rel="stylesheet", id="darksheet", disabled="disabled")
         b.script(src="/static/js/htmx.min.js")
         b.script(src="/static/js/_hyperscript.min.js")
     return b
@@ -59,13 +59,13 @@ def index():
                 with index.div(id="content"):
                     with index.p():
                         index.img(src="/static/peanuts.jpg", _="init transition my opacity to 100% over 2 seconds "
-                                +"on click toggle my .inverted", style="transition: all 250ms ease-in")
+                                +"on click toggle .inverted on me", style="transition: all 250ms ease-in")
                     with index.p():
                         index("Hi, I am Karlo Tablang.")
                     with index.div():
-                        index.a(_t="Contact", **{"hx-get":"/contact/","hx-target":"#values"})
+                        index.a(_t="Contact", _="on click if I match .active remove .active from me then hide #values else remove .active from <a/> then add .active to me then show #values end", **{"hx-get":"/contact/","hx-target":"#values"})
                         index("/")
-                        index.a(_t="Socials", **{"hx-get":"/socials/","hx-target":"#values"})
+                        index.a(_t="Socials", _="on click if I match .active remove .active from me then hide #values else remove .active from <a/> then add .active to me then show #values end", **{"hx-get":"/socials/","hx-target":"#values"})
                     index.div(id="values")
                 index = write_footer(index)
 

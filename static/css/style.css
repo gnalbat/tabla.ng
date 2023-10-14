@@ -205,3 +205,13 @@ input:checked+.slider:before {
 .inverted {
     filter: invert(100%)
 }
+
+a.active {
+    color: rgb(255, 150, 150);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.footer > p > a {
+    display: inline-block
+}
