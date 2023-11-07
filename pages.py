@@ -6,11 +6,14 @@ load_dotenv()
 
 OUTPUT_DIR = os.getenv('OUTPUT_DIR')
 FILENAME_INDEX = OUTPUT_DIR + "/index.html"
+FILENAME_ABOUT = OUTPUT_DIR + "/about/index.html"
 FILENAME_CONTACT = OUTPUT_DIR + "/contact/index.html"
 FILENAME_SOCIALS = OUTPUT_DIR + "/socials/index.html"
 FILENAME_ERR_404 = OUTPUT_DIR + "/404.html"
 
-filenames = [FILENAME_INDEX, FILENAME_CONTACT, FILENAME_SOCIALS, FILENAME_ERR_404]
+filenames = [FILENAME_INDEX, FILENAME_ABOUT, FILENAME_CONTACT, FILENAME_SOCIALS, FILENAME_ERR_404]
+
+HS_IMAGELOAD = "init transition my opacity to 100% over 2 seconds"
 
 
 def write_head(b):
@@ -58,18 +61,29 @@ def index():
                         index.script(src="/static/js/dark.js")
                 with index.div(id="content"):
                     with index.p():
-                        index.img(src="/static/peanuts.jpg", _="init transition my opacity to 100% over 2 seconds "
-                                +"on click toggle .inverted on me", style="transition: all 250ms ease-in")
+                        index.img(src="/static/peanuts.jpg", _=HS_IMAGELOAD, style="transition: all 250ms ease-in")
                     with index.p():
-                        index("Hi, I am Karlo Tablang.")
-                    with index.div():
-                        index.a(_t="Contact", _="on click if I match .active remove .active from me then hide #values else remove .active from <a/> then add .active to me then show #values end", **{"hx-get":"/contact/","hx-target":"#values"})
+                        index("Hi, I'm Karlo Tablang.")
+                    with index.div(_="on htmx:beforeOnLoad take .active from .tab for event.target", **{"hx-target":"#tab-content"}):
+                        index.a(klass="tab", _t="About", **{"hx-get":"/about/",})
                         index("/")
-                        index.a(_t="Socials", _="on click if I match .active remove .active from me then hide #values else remove .active from <a/> then add .active to me then show #values end", **{"hx-get":"/socials/","hx-target":"#values"})
-                    index.div(id="values")
+                        index.a(klass="tab", _t="Contact", **{"hx-get":"/contact/"})
+                        index("/")
+                        index.a(klass="tab", _t="Socials", **{"hx-get":"/socials/"})
+                    index.div(id="tab-content")
                 index = write_footer(index)
 
     return index
+
+
+def about():
+    b = Airium()
+
+    b.p(_t="I am a licensed geodetic engineer in the Philippines, with skills in geomatics and some experience in software development.")
+    b.p(_t="I also know basic photography and music. I am interested in learning visual arts, especially digital and 3D.")
+    b.p(_t="For more information, you may contact me or visit my online accounts.")
+        
+    return b
 
 
 def contact():
@@ -77,6 +91,13 @@ def contact():
 
     with b.ul():
         with b.li():
+            b("Get in touch:")
+            b.a(href="mailto:hello@tabla.ng", _t="hello@tabla.ng")
+        with b.li():
+            b("Work opportunities:")
+            b.a(href="mailto:work@tabla.ng", _t="work@tabla.ng")
+        with b.li():
+            b("Correspondence:")
             b.a(href="mailto:karlo@tabla.ng", _t="karlo@tabla.ng")
     
     return b
@@ -89,7 +110,7 @@ def socials():
         with b.li():
             b.a(href="https://github.com/gnalbat", _t="GitHub", rel="noreferrer", target="_blank")
         with b.li():
-            b.a(href="https://linkedin.com/in/kmtablang", _t="LinkedIn", rel="noreferrer", target="_blank")
+            b.a(href="https://linkedin.com/in/ktablang", _t="LinkedIn", rel="noreferrer", target="_blank")
     return b
 
 
@@ -110,8 +131,7 @@ def err_404():
                         b.script(src="/static/js/dark.js")
                 with b.div(id="content"):
                     with b.p():
-                        b.img(src="/static/peanuts.jpg", _="init transition my opacity to 100% over 2 seconds\
-                                on click toggle my .inverted", style="transition: all 250ms ease-in")
+                        b.img(src="/static/peanuts.jpg", _=HS_IMAGELOAD, style="transition: all 250ms ease-in")
                     with b.p():
                         b("404 Not Found, Sadly")
                 b = write_footer(b)
@@ -120,10 +140,11 @@ def err_404():
 
 
 pages = [
-    ('index', FILENAME_INDEX, index()),
-    ('contact', FILENAME_CONTACT, contact()),
-    ('socials', FILENAME_SOCIALS, socials()),
-    ('404', FILENAME_ERR_404, err_404())
+    ('index',   filenames[0],   index()),
+    ('about',   filenames[1],   about()),
+    ('contact', filenames[2],   contact()),
+    ('socials', filenames[3],   socials()),
+    ('404',     filenames[4],   err_404())
 ]
 
 

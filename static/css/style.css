@@ -125,10 +125,6 @@ img {
     opacity: 0;
 }
 
-img:hover {
-    cursor: pointer;
-}
-
 .switch {
     position: relative;
     display: inline-block;
@@ -214,4 +210,9 @@ a.active {
 
 .footer > p > a {
     display: inline-block
+}
+
+#tab-content p {
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
