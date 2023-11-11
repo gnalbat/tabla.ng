@@ -15,6 +15,11 @@ filenames = [FILENAME_INDEX, FILENAME_ABOUT, FILENAME_CONTACT, FILENAME_SOCIALS,
 
 HS_IMAGELOAD = "init transition my opacity to 100% over 2 seconds"
 
+SOCIAL_LINKS = [
+    ["LinkedIn",    "https://linkedin.com/in/ktablang"],
+    ["GitHub",      "https://github.com/gnalbat"],
+    ["Pexels",      "https://www.pexels.com/@karlo-tablang-762366984/"]
+]
 
 def write_head(b):
     with b.head():
@@ -107,10 +112,9 @@ def socials():
     b = Airium()
 
     with b.ul():
-        with b.li():
-            b.a(href="https://github.com/gnalbat", _t="GitHub", rel="noreferrer", target="_blank")
-        with b.li():
-            b.a(href="https://linkedin.com/in/ktablang", _t="LinkedIn", rel="noreferrer", target="_blank")
+        for link in SOCIAL_LINKS:
+            with b.li():
+                b.a(href=link[1], _t=link[0], rel="noreferrer", target="_blank")
     return b
 
 
