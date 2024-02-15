@@ -8,17 +8,18 @@ OUTPUT_DIR = os.getenv('OUTPUT_DIR')
 FILENAME_INDEX = OUTPUT_DIR + "/index.html"
 FILENAME_ABOUT = OUTPUT_DIR + "/about/index.html"
 FILENAME_CONTACT = OUTPUT_DIR + "/contact/index.html"
-FILENAME_SOCIALS = OUTPUT_DIR + "/socials/index.html"
 FILENAME_ERR_404 = OUTPUT_DIR + "/404.html"
 
-filenames = [FILENAME_INDEX, FILENAME_ABOUT, FILENAME_CONTACT, FILENAME_SOCIALS, FILENAME_ERR_404]
+filenames = [FILENAME_INDEX, FILENAME_ABOUT, FILENAME_CONTACT, FILENAME_ERR_404]
 
 HS_IMAGELOAD = "init transition my opacity to 100% over 2 seconds"
 
 SOCIAL_LINKS = [
     ["LinkedIn",    "https://linkedin.com/in/ktablang"],
     ["GitHub",      "https://github.com/gnalbat"],
-    ["Pexels",      "https://www.pexels.com/@karlo-tablang-762366984/"]
+    ["Pexels",      "https://www.pexels.com/@karlo-tablang-762366984/"],
+    ["Projects Website (gnalb.at)",         "https://gnalb.at"],
+    ["Blog (k.tabla.ng)",                "https://k.tabla.ng"]
 ]
 
 def write_head(b):
@@ -68,13 +69,11 @@ def index():
                     with index.p():
                         index.img(src="/static/peanuts.jpg", _=HS_IMAGELOAD, style="transition: all 250ms ease-in")
                     with index.p():
-                        index("Hi, I'm Karlo Tablang.")
+                        index("Hi! I'm Karlo Tablang.")
                     with index.div(_="on htmx:beforeOnLoad take .active from .tab for event.target", **{"hx-target":"#tab-content"}):
                         index.a(klass="tab", _t="About", **{"hx-get":"/about/",})
                         index("/")
                         index.a(klass="tab", _t="Contact", **{"hx-get":"/contact/"})
-                        index("/")
-                        index.a(klass="tab", _t="Socials", **{"hx-get":"/socials/"})
                     index.div(id="tab-content")
                 index = write_footer(index)
 
@@ -85,8 +84,12 @@ def about():
     b = Airium()
 
     b.p(_t="I am a licensed geodetic engineer in the Philippines, with skills in geomatics and some experience in software development.")
-    b.p(_t="I also know basic photography and music. I am interested in learning visual arts, especially digital and 3D.")
-    b.p(_t="For more information, you may contact me or visit my online accounts.")
+    b.p(_t="You <i>may</i> find me at the following:")
+
+    with b.ul():
+        for link in SOCIAL_LINKS:
+            with b.li():
+                b.a(href=link[1], _t=link[0], rel="noreferrer", target="_blank")
         
     return b
 
@@ -105,16 +108,6 @@ def contact():
             b("Correspondence:")
             b.a(href="mailto:karlo@tabla.ng", _t="karlo@tabla.ng")
     
-    return b
-
-
-def socials():
-    b = Airium()
-
-    with b.ul():
-        for link in SOCIAL_LINKS:
-            with b.li():
-                b.a(href=link[1], _t=link[0], rel="noreferrer", target="_blank")
     return b
 
 
@@ -147,8 +140,7 @@ pages = [
     ('index',   filenames[0],   index()),
     ('about',   filenames[1],   about()),
     ('contact', filenames[2],   contact()),
-    ('socials', filenames[3],   socials()),
-    ('404',     filenames[4],   err_404())
+    ('404',     filenames[3],   err_404())
 ]
 
 
