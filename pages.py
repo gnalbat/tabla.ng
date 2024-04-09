@@ -69,11 +69,11 @@ def index():
                     with index.p():
                         index.img(src="/static/peanuts.jpg", _=HS_IMAGELOAD, style="transition: all 250ms ease-in")
                     with index.p():
-                        index("Hi! I'm Karlo Tablang.")
+                        index("hi! i'm karlo tablang.")
                     with index.div(_="on htmx:beforeOnLoad take .active from .tab for event.target", **{"hx-target":"#tab-content"}):
-                        index.a(klass="tab", _t="About", **{"hx-get":"/about/",})
+                        index.a(klass="tab", _t="about", **{"hx-get":"/about/",})
                         index("/")
-                        index.a(klass="tab", _t="Contact", **{"hx-get":"/contact/"})
+                        index.a(klass="tab", _t="contact", **{"hx-get":"/contact/"})
                     index.div(id="tab-content")
                 index = write_footer(index)
 
@@ -83,8 +83,8 @@ def index():
 def about():
     b = Airium()
 
-    b.p(_t="I am a licensed geodetic engineer in the Philippines, with skills in geomatics and some experience in software development.")
-    b.p(_t="You <i>may</i> find me at the following:")
+    b.p(_t="i am a licensed geodetic engineer in the philippines, with skills in geomatics and some experience in software development.")
+    b.p(_t="you <i>may</i> find me at the following:")
 
     with b.ul():
         for link in SOCIAL_LINKS:
