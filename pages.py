@@ -99,13 +99,13 @@ def contact():
 
     with b.ul():
         with b.li():
-            b("Get in touch:")
+            b("get in touch:")
             b.a(href="mailto:hello@tabla.ng", _t="hello@tabla.ng")
         with b.li():
-            b("Work opportunities:")
+            b("work opportunities:")
             b.a(href="mailto:work@tabla.ng", _t="work@tabla.ng")
         with b.li():
-            b("Correspondence:")
+            b("correspondence:")
             b.a(href="mailto:karlo@tabla.ng", _t="karlo@tabla.ng")
     
     return b
