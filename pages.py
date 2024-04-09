@@ -15,11 +15,11 @@ filenames = [FILENAME_INDEX, FILENAME_ABOUT, FILENAME_CONTACT, FILENAME_ERR_404]
 HS_IMAGELOAD = "init transition my opacity to 100% over 2 seconds"
 
 SOCIAL_LINKS = [
-    ["LinkedIn",    "https://linkedin.com/in/ktablang"],
-    ["GitHub",      "https://github.com/gnalbat"],
-    ["Pexels",      "https://www.pexels.com/@karlo-tablang-762366984/"],
-    ["Projects Website (gnalb.at)",         "https://gnalb.at"],
-    ["Blog (k.tabla.ng)",                "https://k.tabla.ng"]
+    ["linkedin",    "https://linkedin.com/in/ktablang"],
+    ["github",      "https://github.com/gnalbat"],
+    ["pexels",      "https://www.pexels.com/@karlo-tablang-762366984/"],
+    ["gnalb.at (portfolio)",            "https://gnalb.at"],
+    ["k.tabla.ng (digital garden)",     "https://k.tabla.ng"]
 ]
 
 def write_head(b):
@@ -130,7 +130,7 @@ def err_404():
                     with b.p():
                         b.img(src="/static/peanuts.jpg", _=HS_IMAGELOAD, style="transition: all 250ms ease-in")
                     with b.p():
-                        b("404 Not Found, Sadly")
+                        b("404 not found, sadly")
                 b = write_footer(b)
 
     return b
