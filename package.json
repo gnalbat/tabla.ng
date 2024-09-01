@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "htmx.org": "^2.0.2",
+    "modern-normalize": "^3.0.0"
+  }
+}

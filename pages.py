@@ -18,8 +18,8 @@ SOCIAL_LINKS = [
     ["linkedin",    "https://linkedin.com/in/ktablang"],
     ["github",      "https://github.com/gnalbat"],
     ["pexels",      "https://www.pexels.com/@karlo-tablang-762366984/"],
-    ["gnalb.at (portfolio)",            "https://gnalb.at"],
-    ["k.tabla.ng (digital garden)",     "https://k.tabla.ng"]
+    ["portfolio",   "https://gnalb.at"],
+    ["oh, karlo",   "https://ok.tabla.ng"]
 ]
 
 def write_head(b):
@@ -30,7 +30,7 @@ def write_head(b):
         b.link(href="/favicon-32x32.png", rel="icon", type="image/png", sizes="32x32")
         b.link(href="/favicon-16x16.png", rel="icon", type="image/png", sizes="16x16")
         b.link(href="/site.webmanifest", rel="manifest")
-        b.title(_t="tabla.ng")
+        b.title(_t="karlo tablang")
         b.link(href="/static/css/modern-normalize.css", rel="stylesheet")
         b.link(href="/static/css/style.css", rel="stylesheet")
         b.link(href="/static/css/dark.css", rel="stylesheet", id="darksheet", disabled="disabled")
@@ -83,7 +83,7 @@ def index():
 def about():
     b = Airium()
 
-    b.p(_t="i am a licensed geodetic engineer in the philippines, with skills in geomatics and some experience in software development.")
+    b.p(_t="i do stuff.")
     b.p(_t="you <i>may</i> find me at the following:")
 
     with b.ul():
@@ -130,7 +130,7 @@ def err_404():
                     with b.p():
                         b.img(src="/static/peanuts.jpg", _=HS_IMAGELOAD, style="transition: all 250ms ease-in")
                     with b.p():
-                        b("404 not found, sadly")
+                        b("404 not found")
                 b = write_footer(b)
 
     return b
